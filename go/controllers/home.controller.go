@@ -3,9 +3,9 @@ package controller
 import (
 	"net/http"
 
-	"../types"
+	"../handlers"
 )
 
-var HomeController types.HandlerFunc = func(req http.ResponseWriter, res *http.Request) {
-
+var HomeController handlers.HandlerFunc = func(req *http.Request, res handlers.Response) {
+	res.Send(200, "This is Home")
 }

@@ -3,9 +3,10 @@ package controller
 import (
 	"net/http"
 
-	"../types"
+	"../handlers"
 )
 
-var RootController types.HandlerFunc = func(req http.ResponseWriter, res *http.Request) {
+var RootController handlers.HandlerFunc = func(req *http.Request, res handlers.Response) {
+	res.Send(200, "This is Root")
 
 }

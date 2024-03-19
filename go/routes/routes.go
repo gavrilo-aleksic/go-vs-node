@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"../types"
+	"../handlers"
 )
 
 type Routes struct {
@@ -12,6 +12,6 @@ type Routes struct {
 type Route struct {
 	Method string;
 	path string;
-	handler types.HandlerFunc
+	handler handlers.HandlerFunc
 }
 
