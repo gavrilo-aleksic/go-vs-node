@@ -2,6 +2,7 @@ package routes
 
 import (
 	"myserver/handlers"
+	"myserver/log"
 	"net/http"
 )
 
@@ -12,7 +13,8 @@ func MapRoutes (mux *http.ServeMux, routes Routes) {
 				http.Error(res, "Method not allowed", http.StatusMethodNotAllowed)
 				return
 			}
-			 routes.routes[i].handler(req, handlers.Response{OriginalResponse: res }) 
+			log.LogRequest(req.Method, req.URL)
+			 routes.routes[i].handler(handlers.Request{OriginalRequest:  req}, handlers.Response{OriginalResponse: res }) 
 				} )
 	}
 	}
