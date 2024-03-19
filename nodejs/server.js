@@ -11,7 +11,7 @@ http
     logRequest({ router, url });
     if (!router) {
       res.writeHead(404);
-      res.end();
+      res.end("Not Found");
       return;
     }
     router.handler(createReq(req), createRes(res));

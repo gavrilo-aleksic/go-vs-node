@@ -8,14 +8,14 @@ const routes = {
   "/home": {
     method: "GET",
     handler: HomeController,
-    "/root": {
-      method: "GET",
-      handler: RootController,
-    },
-    "/post": {
-      method: "POST",
-      handler: InputDataController,
-    },
+  },
+  "/root": {
+    method: "GET",
+    handler: RootController,
+  },
+  "/post": {
+    method: "POST",
+    handler: InputDataController,
   },
 };
 
