@@ -26,14 +26,6 @@ const mapToRoute = (url, method, routes) => {
   return foundRoute;
 };
 
-const logRequest = ({ router, url }) =>
-  console.log(
-    `[${new Date().toISOString()}] Route: ${router?.route} Method: ${
-      router?.method
-    }, URL: ${url}`
-  );
-
 module.exports = {
   mapToRoute,
-  logRequest,
 };

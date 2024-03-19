@@ -1,7 +1,9 @@
 const http = require("http");
 const routes = require("./routes/routes");
-const { mapToRoute, logRequest } = require("./utils");
+const { mapToRoute } = require("./routes/routes.utils");
+const { logRequest } = require("./log/log");
 const { createReq, createRes } = require("./handlers/handler");
+
 http
   .createServer((req, res) => {
     const { url, method } = req;
