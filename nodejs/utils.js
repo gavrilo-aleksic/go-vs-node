@@ -28,8 +28,8 @@ const mapToRoute = (url, method, routes) => {
 
 const logRequest = ({ router, url }) =>
   console.log(
-    `[${new Date().toISOString()}] Route: ${router.route} Method: ${
-      router.method
+    `[${new Date().toISOString()}] Route: ${router?.route} Method: ${
+      router?.method
     }, URL: ${url}`
   );
 
