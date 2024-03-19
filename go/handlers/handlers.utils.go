@@ -5,7 +5,7 @@ import (
 	"io"
 )
 
-func (response Response) Send(status int, content string) {
+func (response Response) Send(status int, content any) {
 	response.OriginalResponse.WriteHeader(status)
 	io.WriteString(response.OriginalResponse, content)
 }
