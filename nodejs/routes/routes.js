@@ -1,8 +1,20 @@
+const {
+  HomeController,
+  InputDataController,
+  RootController,
+} = require("../controllers");
+
 const routes = {
   "/home": {
     method: "GET",
-    handler: (req, send) => {
-      send({ status: 200, body: "All Good" });
+    handler: HomeController,
+    "/root": {
+      method: "GET",
+      handler: RootController,
+    },
+    "/post": {
+      method: "POST",
+      handler: InputDataController,
     },
   },
 };

@@ -3,10 +3,12 @@ const createReq = (originalReq) => {
 };
 
 const createRes = (originalRes) => {
-  return ({ status, body }) => {
-    originalRes.writeHead(status);
-    originalRes.write(body);
-    originalRes.end();
+  return {
+    send: ({ status, body }) => {
+      originalRes.writeHead(status);
+      originalRes.write(body);
+      originalRes.end();
+    },
   };
 };
 
