@@ -8,7 +8,7 @@ import (
 
 func main() {
 	mux := http.NewServeMux()
-	routes.CreateRoutes(mux)
+	routes.MapRoutes(mux, routes.DefinedRoutes)
 
 	err := http.ListenAndServe(":3333", mux)
 	if err == nil  {

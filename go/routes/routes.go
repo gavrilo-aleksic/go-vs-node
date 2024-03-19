@@ -1,17 +1,10 @@
 package routes
 
 import (
-	"myserver/handlers"
+	controller "myserver/controllers"
 )
-
-type Routes struct {
-	routes []Route
-}
-
-
-type Route struct {
-	Method string;
-	path string;
-	handler handlers.HandlerFunc
-}
+var DefinedRoutes = Routes{routes: []Route {
+	{path: "/home", Method: "GET", handler: controller.HomeController },
+	{path: "/", Method: "GET", handler: controller.RootController},
+}}
 
