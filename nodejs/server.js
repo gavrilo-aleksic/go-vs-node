@@ -1,7 +1,7 @@
 const http = require("http");
-const routes = require("./routes");
+const routes = require("./routes/routes");
 const { mapToRoute, logRequest } = require("./utils");
-const { createReq, createRes } = require("./handler");
+const { createReq, createRes } = require("./handlers/handler");
 http
   .createServer((req, res) => {
     const { url, method } = req;
@@ -14,4 +14,6 @@ http
     }
     router.handler(createReq(req), createRes(res));
   })
-  .listen(3000);
+  .listen(3000, () => {
+    console.log("NodeJS server started on port 3000");
+  });
