@@ -3,7 +3,7 @@ package controller
 import (
 	"net/http"
 
-	"../handlers"
+	handlers "myserver/handlers"
 )
 
 var RootController handlers.HandlerFunc = func(req *http.Request, res handlers.Response) {

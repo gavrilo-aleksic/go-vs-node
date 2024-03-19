@@ -3,8 +3,8 @@ package routes
 import (
 	"net/http"
 
-	controller "../controllers"
-	handlers "../handlers"
+	controller "myserver/controllers"
+	handlers "myserver/handlers"
 )
 
 func CreateRoutes (mux *http.ServeMux) Routes{
