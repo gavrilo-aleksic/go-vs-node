@@ -3,11 +3,20 @@ package handlers
 import (
 	"encoding/json"
 	"io"
+	"reflect"
 )
 
-func (response Response) Send(status int, content string) {
-	response.OriginalResponse.WriteHeader(status)
-	io.WriteString(response.OriginalResponse, content)
+func (response Response) Send(status int, content any) {
+	if reflect.TypeOf(content) == reflect.TypeOf("string"){
+		response.OriginalResponse.WriteHeader(status)
+		io.WriteString(response.OriginalResponse, content.(string))
+	} else {
+		response.OriginalResponse.Header().Set("Content-Type", "application/json")
+		response.OriginalResponse.WriteHeader(status)
+		json.NewEncoder(response.OriginalResponse).Encode(content)
+	}
+
+
 }
 
 func (request Request) ParseJson() (value any, err error) {

@@ -7,7 +7,7 @@ import (
 
 
 var InputDataController handlers.HandlerFunc = func(req handlers.Request, res handlers.Response) {
- _, err := req.ParseJson()
+ body, err := req.ParseJson()
  
  if err != nil {
 	fmt.Println("Error found", err)
@@ -15,5 +15,5 @@ var InputDataController handlers.HandlerFunc = func(req handlers.Request, res ha
 	return
  }
 
-  res.Send(200, "Got the response")
+  res.Send(200, body)
 }
