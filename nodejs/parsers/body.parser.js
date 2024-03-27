@@ -7,7 +7,7 @@ const parseBody = (req) =>
     req.on("end", () => {
       const { error, data } = transformBody(body, req);
       if (error) {
-        reject({ error, data });
+        resolve({ error, data: null });
       } else {
         resolve({ data });
       }
