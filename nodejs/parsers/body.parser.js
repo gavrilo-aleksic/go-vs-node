@@ -1,4 +1,20 @@
-const transformData = (data, req) => {
+const parseBody = (req) =>
+  new Promise((resolve, reject) => {
+    let body = "";
+    req.on("data", (data) => {
+      body += data.toString();
+    });
+    req.on("end", () => {
+      const { error, data } = transformBody(body, req);
+      if (error) {
+        reject({ error, data });
+      } else {
+        resolve({ data });
+      }
+    });
+  });
+
+const transformBody = (data, req) => {
   if (req.headers["content-type"] === "application/json") {
     try {
       return { data: JSON.parse(data) };
@@ -10,5 +26,5 @@ const transformData = (data, req) => {
 };
 
 module.exports = {
-  transformData,
+  parseBody,
 };

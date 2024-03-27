@@ -1,23 +1,12 @@
-const { transformData } = require("../parsers/body.parser");
+const { parseBody } = require("../parsers/body.parser");
+const { parsePathParams } = require("../parsers/url.parser");
 
-const createReq = (originalRequest) => {
+const createReq = (originalRequest, router) => {
   return {
     originalRequest,
-    parseBody: () => {
-      return new Promise((resolve, reject) => {
-        let body = "";
-        originalRequest.on("data", (data) => {
-          body += data.toString();
-        });
-        originalRequest.on("end", () => {
-          const { error, data } = transformData(body, originalRequest);
-          if (error) {
-            reject({ error, data });
-          } else {
-            resolve({ data });
-          }
-        });
-      });
+    pathParams: parsePathParams(originalRequest.url, router),
+    body: {
+      parseBody: () => parseBody(originalRequest),
     },
   };
 };

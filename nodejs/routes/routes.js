@@ -2,6 +2,7 @@ const {
   HomeController,
   InputDataController,
   RootController,
+  PathParamController,
 } = require("../controllers");
 
 const routes = {
@@ -17,6 +18,13 @@ const routes = {
     method: "POST",
     handler: InputDataController,
   },
+  "/data/:id": {
+    method: "GET",
+    handler: PathParamController,
+  },
 };
 
-module.exports = routes;
+module.exports = Object.keys(routes).reduce(
+  (prev, curr) => ({ ...prev, [curr]: { ...routes[curr], path: curr } }),
+  {}
+);
