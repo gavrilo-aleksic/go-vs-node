@@ -60,6 +60,20 @@ describe("Test NodeJS controllers", () => {
         queryParams: { query: "Gavrilo" },
       });
     });
+
+    test("Should return empty query parameter with when no query params provided", async () => {
+      const request = createEndpoint({
+        method: "GET",
+        route: "/data/someId/someOtherId?",
+      });
+
+      const { status, data } = await sendRequest(request);
+      expect(status).toBe(200);
+      expect(data).toMatchObject({
+        pathParams: { id: "someId", id2: "someOtherId" },
+        queryParams: {},
+      });
+    });
   });
 
   describe("Tests the /post endpoint", () => {
