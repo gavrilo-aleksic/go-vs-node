@@ -22,14 +22,14 @@ func (response Response) Send(status int, content any) {
 func (request Request) ParseJson() (value any, err error) {
 	body, err := io.ReadAll(request.OriginalRequest.Body)
     if err != nil {
-        return "", err
+        return nil, err
     }
 
 		var genericType interface{}
 
     err = json.Unmarshal(body, &genericType)
     if err != nil {
-			return "", err
+			return nil, err
     }
 
 		return genericType, nil
