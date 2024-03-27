@@ -1,4 +1,8 @@
 const http = require("http");
+
+const host = process.env.TEST_HOST;
+const port = process.env.PORT;
+
 const sendRequest = (options) => {
   const { body } = options;
 
@@ -33,8 +37,8 @@ const sendRequest = (options) => {
 };
 
 const createEndpoint = ({ route, method, body }) => ({
-  host: "localhost",
-  port: 3000,
+  host,
+  port,
   path: route,
   method,
   headers:

@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test:node": "HOST=localhost PORT=3000 jest",
+    "test:go": "HOST=localhost PORT=3333 jest",
     "start": "node server.js"
   },
   "author": "",

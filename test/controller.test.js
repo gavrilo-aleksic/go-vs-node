@@ -31,7 +31,7 @@ describe("Test NodeJS controllers", () => {
         route: "/data/someId",
       });
 
-      const { status, data } = await sendRequest(request);
+      const { status } = await sendRequest(request);
       expect(status).toBe(404);
     });
 
