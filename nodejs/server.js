@@ -14,7 +14,7 @@ http
       res.end("Not Found");
       return;
     }
-    router.handler(createReq(req), createRes(res));
+    router.handler(createReq(req, router), createRes(res));
   })
   .listen(3000, () => {
     console.log("NodeJS server started on port 3000");
