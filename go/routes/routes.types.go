@@ -10,7 +10,6 @@ type Routes struct {
 
 
 type Route struct {
-	Method string;
 	path string;
 	handler handlers.HandlerFunc
 }

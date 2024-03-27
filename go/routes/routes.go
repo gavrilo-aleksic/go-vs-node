@@ -4,9 +4,9 @@ import (
 	controller "myserver/controllers"
 )
 var DefinedRoutes = Routes{routes: []Route {
-	{path: "/root", Method: "GET", handler: controller.RootController},
-	{path: "/home", Method: "GET", handler: controller.HomeController },
-	{path: "/post", Method: "POST", handler: controller.InputDataController},
-	{path: "/data/{id}/{id2}", Method: "GET", handler: controller.PathParamController},
+	{path: "GET/root",  handler: controller.RootController},
+	{path: "GET /home", handler: controller.HomeController },
+	{path: "POST /post", handler: controller.InputDataController},
+	{path: "GET /data/{id}/{id2}", handler: controller.PathParamController},
 }}
 

@@ -1,14 +1,36 @@
 const { sendRequest, createEndpoint } = require("../nodejs/test.utils");
 
 describe("Test NodeJS controllers", () => {
-  test("Should return Not Found for not found route", async () => {
-    const request = createEndpoint({
-      method: "GET",
-      route: "/notfound",
+  describe("Tests the matching routing and returning 404", () => {
+    test("Should return Not Found for not found route", async () => {
+      const request = createEndpoint({
+        method: "GET",
+        route: "/notfound",
+      });
+      const { status, data } = await sendRequest(request);
+      expect(status).toBe(404);
+      expect(data).toBe("Not Found");
     });
-    const { status, data } = await sendRequest(request);
-    expect(status).toBe(404);
-    expect(data).toBe("Not Found");
+
+    test("Should return not found if missing second path param", async () => {
+      const request = createEndpoint({
+        method: "GET",
+        route: "/data/someId",
+      });
+
+      const { status } = await sendRequest(request);
+      expect(status).toBe(404);
+    });
+
+    test("Should return not found if invalid method provided", async () => {
+      const request = createEndpoint({
+        method: "PUT",
+        route: "/home",
+      });
+
+      const { status } = await sendRequest(request);
+      expect(status).toBe(404);
+    });
   });
 
   describe("Tests the /data/:id/:id2 endpoint", () => {
@@ -23,16 +45,6 @@ describe("Test NodeJS controllers", () => {
       expect(data).toMatchObject({
         pathParams: { id: "someId", id2: "someOtherId" },
       });
-    });
-
-    test("Should return not found if missing second path param", async () => {
-      const request = createEndpoint({
-        method: "GET",
-        route: "/data/someId",
-      });
-
-      const { status } = await sendRequest(request);
-      expect(status).toBe(404);
     });
 
     test("Should return query parameter with names when provided", async () => {
