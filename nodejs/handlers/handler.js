@@ -1,10 +1,11 @@
 const { parseBody } = require("../parsers/body.parser");
-const { parsePathParams } = require("../parsers/url.parser");
+const { parsePathParams, parseQueryParams } = require("../parsers/url.parser");
 
 const createReq = (originalRequest, router) => {
   return {
     originalRequest,
     pathParams: parsePathParams(originalRequest.url, router),
+    queryParams: parseQueryParams(originalRequest.url),
     body: {
       parseBody: () => parseBody(originalRequest),
     },

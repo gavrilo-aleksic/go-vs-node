@@ -18,7 +18,7 @@ const routes = {
     method: "POST",
     handler: InputDataController,
   },
-  "/data/:id": {
+  "/data/:id/:id2": {
     method: "GET",
     handler: PathParamController,
   },

@@ -1,5 +1,8 @@
 const PathParamController = (req, { send }) => {
-  send({ status: 200, body: "This is Path Param " });
+  const pathParams = req.pathParams;
+  const queryParams = req.queryParams;
+
+  send({ status: 200, body: { pathParams, queryParams } });
 };
 
 module.exports = PathParamController;
